@@ -1,9 +1,26 @@
+
+body{
+    background-color:#008b8b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h1 {
     font-family: 'GAU_font_cube_B', sans-serif;
     /*font-family: 'GAU_font_cube_R', sans-serif;*/
     font-size: 50px;       
     text-align: center;    
     color: white;                        
+}
+
+button{
+    font-size: 18px;
+    font-family: 'Dotspitch', sans-serif;
+    cursor: pointer;
+    border-radius: 8px;
+    width: auto;
+    font-weight: bold;
 }
 
 h1:hover{
@@ -24,18 +41,3 @@ color: black;
     font-weight: bold;
 }
 
-body{
-    background-color:#008b8b;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-button{
-    font-size: 18px;
-    font-family: 'Dotspitch', sans-serif;
-    cursor: pointer;
-    border-radius: 8px;
-    width: auto;
-    font-weight: bold;
-}
