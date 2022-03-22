@@ -20,12 +20,9 @@ console.log(palabra + "  "+ palabraOculta);
 
 document.querySelector('#output').innerHTML = palabraOculta;
 
-
-
 //validación de mayusculas 
 var lock = (e, max, arr = e.value.match(/[A-Z]/g) || []) => arr.length === max;
 
- 
 document.getElementById("calcular").onclick = () => { 
     if(lock(document.getElementById("letra"), 1)) console.log("Correcto");
     else alert("Debe ingresar una letra en mayúscula");
@@ -74,8 +71,6 @@ document.querySelector('#calcular').addEventListener('click',()=>
     }
     });
 
-
-
 function CambiarImagen(id_foto)
 {
 
@@ -89,7 +84,6 @@ function CambiarImagen(id_foto)
     }
 
 }
-
 
 const ProtegerBotones = () =>{
     let boton = document.querySelector('#calcular');

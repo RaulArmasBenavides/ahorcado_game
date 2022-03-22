@@ -1,0 +1,34 @@
+h1 {
+    font-family: 'GAU_font_cube_B', sans-serif;
+    /*font-family: 'GAU_font_cube_R', sans-serif;*/
+    font-size: 50px;       
+    text-align: center;    
+    color: white;                        
+}
+.subtitle {
+    text-decoration: underline;
+    font-style: oblique;
+}
+
+.maincontainer {
+    font-family: 'Dotspitch', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+body{
+    background-color:#008b8b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button{
+    font-size: 18px;
+    font-family: 'Dotspitch', sans-serif;
+    cursor: pointer;
+    border-radius: 8px;
+    width: auto;
+    font-weight: bold;
+}
