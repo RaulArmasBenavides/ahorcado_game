@@ -1,4 +1,3 @@
-//referencia : https://www.youtube.com/watch?v=mn07nxUXoPA
 'use strict';
 let nro_intentos = 0;
 let palabras;
@@ -9,17 +8,23 @@ let fin = false;
 let posicion;
 let palabraOculta;
 
-String.prototype.replaceAt = function (index,character) 
-{
-    return this.substr(0,index) + character + this.substr(index+character.length);
-}
+const  drawLines = (palabra,num) =>{
+    palabraOculta = Array.from(palabra);
+    for (var i = 0; i < num; i++) {
+      if(palabra[i] ==" ")
+      {
+        palabraOculta[i] = " ";
+      }
+      else
+        palabraOculta[i] = "_";
+    }
+    document.querySelector('#output').innerHTML = palabraOculta.join("");
+};
 
 const LoadPoliticalParties  =() =>{
-    palabras = ['APRA','PPC','ACCION POPULAR','FREPAP','FUERZAPOPULAR','PARTIDO MORADO'];
+    palabras = ['APRA','PPC','ACCION POPULAR','FREPAP','FUERZA POPULAR','PARTIDO MORADO'];
     palabra = palabras[Math.floor(Math.random()*palabras.length)]
-    posicion = 0;
-    palabraOculta = palabra.replace(/./g,"_ ");
-    document.querySelector('#output').innerHTML = palabraOculta;
+    drawLines(palabra,palabra.length);
 };
 
 //validación de mayusculas 
@@ -34,16 +39,19 @@ const ChangeImage =(id_foto)=>
         char_raiz = char_raiz.concat(id_foto);
         imagen.src = char_raiz.concat(".png");
     }
-}
+};
 
 const ProtectButtons = () =>{
     let boton = document.querySelector('#calcular');
     boton.disabled = true;
-}
+};
 
 document.querySelector("#clean").addEventListener('click',()=>{
     document.querySelector('#letra').value = "";
     document.querySelector('#calcular').disabled  = false;
+    palabra ="";
+    palabraOculta = "";
+        fin = false; 
     LoadPoliticalParties();
 });
 
@@ -52,20 +60,19 @@ document.querySelector('#calcular').addEventListener('click',()=>
     let ok = false;
     let letra = document.querySelector('#letra').value.toUpperCase();
     console.log(letra);
-
-
-    for(const i in palabra)
+    let J =0;
+    if(palabra.indexOf(letra) != -1)
     {
-        if(letra==palabra[i])
-        {
-            palabraOculta = palabraOculta.replaceAt(i*2,letra);
-            ok = true;
-        }
+        console.log("la palabra sí contiene la letra " + letra + " ESTA EN EL INDIDCE " + palabra.indexOf(letra));
+        for(var i=0; i<palabra.length; i++) {
+            if(palabra[i]==letra) palabraOculta[i] = letra;
+            ok =true;
 
-        if(!palabraOculta.includes('_'))
-        {
-            fin = true;
-        }
+               if(!palabraOculta.includes('_'))
+                {
+                        fin = true;
+                }
+          }
     }
 
     if(ok == false)
@@ -80,13 +87,13 @@ document.querySelector('#calcular').addEventListener('click',()=>
     }
     else
     {
-            document.querySelector('#output').innerHTML = palabraOculta;
-            console.time(10);
-            if (fin ==true)
-            {
-               ProtectButtons();
-              alert('GANASTE');
-            }
+        document.querySelector('#output').innerHTML = palabraOculta.join("");
+        console.time(10);
+        if (fin ==true)
+        {
+            ProtectButtons();
+            alert('GANASTE');
+        }
     }
 });
 //old form
@@ -96,5 +103,12 @@ document.querySelector('#calcular').addEventListener('click',()=>
 //     else 
 //     alert("Debe ingresar una letra en mayúscula");
 // };
+
+// String.prototype.replaceAt = function (index,character) 
+// {
+//     return this.substr(0,index) + character + this.substr(index+character.length);
+// }
+
+
 //main
 LoadPoliticalParties();
