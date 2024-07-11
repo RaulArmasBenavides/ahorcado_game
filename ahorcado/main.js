@@ -10,7 +10,7 @@ let palabraOculta;
 
 const  drawLines = (palabra,num) =>{
     palabraOculta = Array.from(palabra);
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
       if(palabra[i] ==" ")
       {
         palabraOculta[i] = " ";
@@ -28,14 +28,13 @@ const LoadPoliticalParties  =() =>{
 };
 
 //validación de mayusculas 
-var lock = (e, max, arr = e.value.match(/[A-Z]/g) || []) => arr.length === max;
-
+const lock = (e, max, arr = e.value.match(/[A-Z]/g) || []) => arr.length === max;
 const ChangeImage =(id_foto)=>  
 {
     if(id_foto<MAX_ATTEMPTS)
     {
         let char_raiz = "./imgs/Ahorcado-";
-        var imagen = document.getElementById("foto");
+        let imagen = document.getElementById("foto");
         char_raiz = char_raiz.concat(id_foto);
         imagen.src = char_raiz.concat(".png");
     }
@@ -64,18 +63,17 @@ document.querySelector('#calcular').addEventListener('click',()=>
     if(palabra.indexOf(letra) != -1)
     {
         console.log("la palabra sí contiene la letra " + letra + " ESTA EN EL INDIDCE " + palabra.indexOf(letra));
-        for(var i=0; i<palabra.length; i++) {
+        for(let i=0; i<palabra.length; i++) {
             if(palabra[i]==letra) palabraOculta[i] = letra;
             ok =true;
-
-               if(!palabraOculta.includes('_'))
-                {
-                        fin = true;
-                }
+            if(!palabraOculta.includes('_'))
+            {
+              fin = true;
+            }
           }
     }
 
-    if(ok == false)
+    if(!ok)
     {   nro_intentos++;
         ChangeImage(nro_intentos);
         if(nro_intentos >= MAX_ATTEMPTS)
@@ -89,7 +87,7 @@ document.querySelector('#calcular').addEventListener('click',()=>
     {
         document.querySelector('#output').innerHTML = palabraOculta.join("");
         console.time(10);
-        if (fin ==true)
+        if (fin)
         {
             ProtectButtons();
             alert('GANASTE');
