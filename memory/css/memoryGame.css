@@ -1,0 +1,57 @@
+/* src/styles/memoryGame.css */
+
+h1{
+	text-align: center;
+}
+#memory-container {
+	display: grid;
+	grid-template-columns: repeat(4, 80px);
+	gap: 10px;
+	justify-content: center;
+	margin: 30px auto;
+ }
+ 
+ .memory-card {
+	width: 80px;
+	height: 80px;
+	font-size: 32px;
+	background: #f0f0f0;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	perspective: 1000px;
+	cursor: pointer;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.5s;
+ }
+ 
+ .memory-card.flipped .front,
+ .memory-card.matched .front {
+	transform: rotateY(0deg);
+ }
+ 
+ .memory-card.flipped .back,
+ .memory-card.matched .back {
+	transform: rotateY(180deg);
+ }
+ 
+ .memory-card .front,
+ .memory-card .back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+ }
+ 
+ .memory-card .front {
+	transform: rotateY(180deg);
+ }
+ 
+ .memory-card .back {
+	background: #eee;
+	color: #888;
+ }
+ 
